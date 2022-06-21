@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     public bool hasPowerup = false;
     public float powerupTimer = 7.0f;
+    public GameObject powerupIndicator;
 
     private float powerupStrength = 15.0f;
     private Rigidbody playerRb;
@@ -22,8 +23,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float forwardInput = Input.GetAxis("Vertical");
-
         playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+        powerupIndicator.transform.position = playerRb.transform.position - new Vector3(0, 0.5f, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             hasPowerup = true;
+            powerupIndicator.gameObject.SetActive(true);
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(powerupTimer);
         hasPowerup = false;
+        powerupIndicator.gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
