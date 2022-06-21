@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f;
     public bool hasPowerup = false;
+    public float powerupTimer = 7.0f;
 
     private float powerupStrength = 15.0f;
     private Rigidbody playerRb;
@@ -31,7 +32,14 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             hasPowerup = true;
+            StartCoroutine(PowerupCountdownRoutine());
         }
+    }
+
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(powerupTimer);
+        hasPowerup = false;
     }
 
     private void OnCollisionEnter(Collision collision)
