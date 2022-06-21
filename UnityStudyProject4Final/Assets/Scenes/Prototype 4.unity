@@ -640,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  hasPowerup: 0
 --- !u!1 &1613512481
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +740,14 @@ PrefabInstance:
     - target: {fileID: 1762167016307408533, guid: a63a96234849d1c4f9b3a131df77d262, type: 3}
       propertyPath: m_Name
       value: Powerup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762167016307408533, guid: a63a96234849d1c4f9b3a131df77d262, type: 3}
+      propertyPath: m_TagString
+      value: Powerup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835428481680891209, guid: a63a96234849d1c4f9b3a131df77d262, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a63a96234849d1c4f9b3a131df77d262, type: 3}
